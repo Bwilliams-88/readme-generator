@@ -1,6 +1,8 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require ('fs');
+
+
 // TODO: Create an array of questions for user input
 const questions = [
     {
@@ -11,17 +13,17 @@ const questions = [
     {
        type: 'input',
        name: 'description',
-       message: 'Enter a description for your README.md',
+       message: 'Enter a description for your README.md.',
     },
     {
         type: 'input',
-        name: 'installation instructions',
-        message: 'Please describe the installation process',
+        name: 'installation',
+        message: 'Please describe the installation process.',
     },
     {
         type: 'input',
         name: 'usage information',
-        message: 'Please describe what this README.md is being used for',
+        message: 'Please describe what this README.md is being used for.',
     },
     {
         type: 'input',
@@ -31,15 +33,55 @@ const questions = [
     {
         type: 'input',
         name: 'test instructions',
-        message: 'Please explain how to test your README.md file',
+        message: 'Please explain how to test your README.md file.',
     }
 ];
 
+inquirer
+    .prompt(questions)
+    .then(answers => {
+        console.log(answers);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+
 // TODO: Create a function to write README file
-function writeToFile(README, data) {}
+function writeReadme(content) {
+    const readmeContent = `# My Project README\n\n${content}`;
+
+    fs.writeFile('README.md', readmeContent, (err) => {
+    if (err) { 
+        console.error('Error writing README:', err);
+    } else {
+        console.log('README file created successfully.');
+    }
+    });
+}
+
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    const myApp = {
+        initialized: false,
+        init: function() {
+            console.log('App initialized!');
+        this.initialized = true;
+        },
+    };
+}
+
+function callAppInit() {
+    if (!myApp.initialized) {
+        myApp.init();
+    } else {
+        console.log('App is already initialized.');
+    }
+}
 
 // Function call to initialize app
+
 init();
+writeReadme();
+callAppInit();
