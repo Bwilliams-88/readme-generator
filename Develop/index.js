@@ -22,29 +22,22 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'usage information',
+        name: 'usage',
         message: 'Please describe what this README.md is being used for.',
     },
     {
         type: 'input',
-        name: 'contribution guidelines',
+        name: 'contribution',
         message: 'What are the guidelines for contributing?',
     },
     {
         type: 'input',
-        name: 'test instructions',
+        name: 'test',
         message: 'Please explain how to test your README.md file.',
     }
 ];
 
-inquirer
-    .prompt(questions)
-    .then(answers => {
-        console.log(answers);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+
 
 
 // TODO: Create a function to write README file
@@ -58,30 +51,25 @@ function writeReadme(content) {
         console.log('README file created successfully.');
     }
     });
-}
+};
 
 
 // TODO: Create a function to initialize app
 function init() {
-    const myApp = {
-        initialized: false,
-        init: function() {
-            console.log('App initialized!');
-        this.initialized = true;
-        },
-    };
-}
+    inquirer
+    .prompt(questions)
+    .then(answers => {
+        writeReadme();
+        console.log(answers);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    console.log('App initialized!');
+};
 
-function callAppInit() {
-    if (!myApp.initialized) {
-        myApp.init();
-    } else {
-        console.log('App is already initialized.');
-    }
-}
 
 // Function call to initialize app
 
 init();
-writeReadme();
-callAppInit();
+// writeReadme();
