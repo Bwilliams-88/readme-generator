@@ -19,13 +19,13 @@ function renderLicenseBadge(license) {
 // If there is no license, return an empty string
 function renderLicenseLink(license) {
   if (license === 'MIT'){
-    return 'https://opensource.org/licenses/MIT'
+    return 'MIT License: https://opensource.org/licenses/MIT'
   }
   if (license === 'Apache2.0'){
-    return 'https://opensource.org/licenses/Apache-2.0'
+    return 'Apache2.0 License: https://opensource.org/licenses/Apache-2.0'
   }
   if (license === 'IBM'){
-    return 'https://opensource.org/licenses/IPL-1.0'
+    return 'IBM License: https://opensource.org/licenses/IPL-1.0'
   }
   if (license === 'None'){
     return ''
@@ -34,7 +34,32 @@ function renderLicenseLink(license) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+  const licenseInfo = {
+    'MIT': {
+      name: 'MIT License',
+      url: 'https://opensource.org/licenses/MIT'
+    },
+    'Apache2.0': {
+      name: 'Apache2.0 License',
+      url: 'https://opensource.org/licenses/Apache-2.0'
+    },
+    'IBM': {
+      name: 'IBM License',
+      url: 'https://opensource.org/licenses/IPL-1.0'
+    },
+  };
+
+  if (licenseInfo.hasOwnProperty(license)) {
+    const licenseName = licenseInfo[license].name;
+    const licenseURL = licenseInfo[license].url;
+    const licenseSection = `## This project is licensed under [${licenseName}](${licenseURL}).`;
+    return licenseSection;
+  } else {
+    return 'Invalid license type'
+  }
+}
+
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
@@ -46,7 +71,8 @@ ${renderLicenseBadge(data.license)}
 # Description
 ${data.description}
 
-#Table of Contents
+# Table of Contents
+${tableOfContents()}
 
 # Installation Instructions
 ${data.installation}
@@ -55,7 +81,7 @@ ${data.installation}
 ${data.usage}
 
 # License
-${renderLicenseLink(data.license)}
+${renderLicenseSection(data.license)}
 
 # Contribution Guidelines 
 ${data.contribution}
@@ -64,7 +90,10 @@ ${data.contribution}
 ${data.test}
 
 # Questions
+If you have any questions you can reach me here!\n
 
+[Github](${data.github})\n
+[Email](${data.email})
 
 `;
 }
