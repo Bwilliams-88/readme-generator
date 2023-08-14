@@ -17,20 +17,20 @@ function renderLicenseBadge(license) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {
-  if (license === 'MIT'){
-    return 'MIT License: https://opensource.org/licenses/MIT'
-  }
-  if (license === 'Apache2.0'){
-    return 'Apache2.0 License: https://opensource.org/licenses/Apache-2.0'
-  }
-  if (license === 'IBM'){
-    return 'IBM License: https://opensource.org/licenses/IPL-1.0'
-  }
-  if (license === 'None'){
-    return ''
-  }
-}
+// function renderLicenseLink(license) {
+//   if (license === 'MIT'){
+//     return 'MIT License: https://opensource.org/licenses/MIT'
+//   }
+//   if (license === 'Apache2.0'){
+//     return 'Apache2.0 License: https://opensource.org/licenses/Apache-2.0'
+//   }
+//   if (license === 'IBM'){
+//     return 'IBM License: https://opensource.org/licenses/IPL-1.0'
+//   }
+//   if (license === 'None'){
+//     return ''
+//   }
+// }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
@@ -53,7 +53,7 @@ function renderLicenseSection(license) {
   if (licenseInfo.hasOwnProperty(license)) {
     const licenseName = licenseInfo[license].name;
     const licenseURL = licenseInfo[license].url;
-    const licenseSection = `## This project is licensed under [${licenseName}](${licenseURL}).`;
+    const licenseSection = `This project is licensed under [${licenseName}](${licenseURL}).`;
     return licenseSection;
   } else {
     return 'Invalid license type'
@@ -63,6 +63,14 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
+  const contents = {
+    installation: '#installation-instructions',
+    usage: '#usage-information',
+    license: '#license',
+    contribution: '#contribution-guildelines',
+    test: '#test-instructions',
+    questions: '#questions',
+  }
   return `# ${data.title}
 
 ${renderLicenseBadge(data.license)}
@@ -72,7 +80,12 @@ ${renderLicenseBadge(data.license)}
 ${data.description}
 
 # Table of Contents
-${tableOfContents()}
+[Installation Instructions](${contents.installation})\n
+[Usage Information](${contents.usage})\n
+[License](${contents.license})\n
+[Contribution Guidelines](${contents.contribution})\n
+[Test Instructions](${contents.test})\n
+[Questions](${contents.questions})\n
 
 # Installation Instructions
 ${data.installation}
@@ -82,6 +95,7 @@ ${data.usage}
 
 # License
 ${renderLicenseSection(data.license)}
+
 
 # Contribution Guidelines 
 ${data.contribution}
@@ -93,7 +107,7 @@ ${data.test}
 If you have any questions you can reach me here!\n
 
 [Github](${data.github})\n
-[Email](${data.email})
+(${data.email})
 
 `;
 }
