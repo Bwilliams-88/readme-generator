@@ -1,10 +1,10 @@
-# SAMPLE README
+# test
 
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 # Description
-SAMPLE
+test
 
 # Table of Contents
 [Installation Instructions](#installation-instructions)
@@ -21,26 +21,26 @@ SAMPLE
 
 
 # Installation Instructions
-SAMPLE
+test
 
 # Usage Information
-SAMPLE
+test
 
 # License
-This project is licensed under [Apache2.0 License](https://opensource.org/licenses/Apache-2.0).
+This project is licensed under [MIT License](https://opensource.org/licenses/MIT).
 
 
 # Contribution Guidelines 
-SAMPLE
+test
 
 # Test Instructions
-SAMPLE
+test
 
 # Questions
 If you have any questions you can reach me here!
 
 
-[Github](http://github.com/bwilliams-88)
+[Github]()
 
-(example@example.com)
+()
 
